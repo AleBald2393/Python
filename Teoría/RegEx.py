@@ -49,3 +49,6 @@ print(new_string)
 
 #PARA REEMPLAZAR
 g.replace("Mary", "Bob")
+
+#PARA VOLVER EN LISTA
+g.split()
