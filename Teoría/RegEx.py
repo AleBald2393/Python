@@ -10,3 +10,9 @@ Regular expressions (RegEx) are patterns used to match and manipulate strings of
 |\S|Matches any non-whitespace character|"hello_world" matches "\S\S\S\S\S\S\S\S\S"|
 |\b|Matches the boundary between a word character and a non-word character|"cat" matches "\bcat\b" in "The cat sat on the mat"|
 |\B|Matches any position that is not a word boundary|"cat" matches "\Bcat\B" in "category" but not in "The cat sat on the mat"|
+#Ejemplo:
+pattern = r"\W"  # Matches any non-word character
+text = "Hello, world!"
+matches = re.findall(pattern, text)
+
+print("Matches:", matches)
