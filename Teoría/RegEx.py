@@ -34,3 +34,15 @@ result = re.findall("as", s2)
 
 # Print out the list of matched words
 print(result)
+
+# Define the regular expression pattern to search for
+pattern = r"King of Pop"
+
+# Define the replacement string
+replacement = "legend"
+
+# Use the sub function to replace the pattern with the replacement string
+new_string = re.sub(pattern, replacement, s2, flags=re.IGNORECASE)
+
+# The new_string contains the original string with the pattern replaced by the replacement string
+print(new_string) 
