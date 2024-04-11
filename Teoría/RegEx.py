@@ -16,3 +16,12 @@ text = "Hello, world!"
 matches = re.findall(pattern, text)
 
 print("Matches:", matches)
+
+pattern = r"\d\d\d\d\d\d\d\d\d\d"  # Matches any ten consecutive digits
+text = "My Phone number is 1234567890"
+match = re.search(pattern, text)
+
+if match:
+    print("Phone number found:", match.group())
+else:
+    print("No match")
