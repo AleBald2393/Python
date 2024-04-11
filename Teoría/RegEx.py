@@ -46,3 +46,6 @@ new_string = re.sub(pattern, replacement, s2, flags=re.IGNORECASE)
 
 # The new_string contains the original string with the pattern replaced by the replacement string
 print(new_string) 
+
+#PARA REEMPLAZAR
+g.replace("Mary", "Bob")
