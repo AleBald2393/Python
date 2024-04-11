@@ -50,6 +50,11 @@ print(new_string)
 #PARA REEMPLAZAR
 g.replace("Mary", "Bob")
 
+segunda opción
+new_str1 = re.sub(r"fox", "bear", str1)
+
+print(new_str1)
+
 #PARA VOLVER EN LISTA
 g.split()
 
