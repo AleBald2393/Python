@@ -66,3 +66,7 @@ if result:
     print("digit found")
 else:
     print ("digit not found.")
+
+#GUARDAR EN UNA LISTA LAS OCURRENCIAS DE UN SUB STRING EN UN STRING)
+result=re.findall("woo",str2)
+result
