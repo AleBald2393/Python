@@ -52,3 +52,12 @@ g.replace("Mary", "Bob")
 
 #PARA VOLVER EN LISTA
 g.split()
+
+#PARA BUSCAR SI HAY DIGITOS EN UN STRING
+s3 = "House number- 1105"
+# Write your code below and press Shift+Enter to execute
+result=re.search("\d",s3)
+if result:
+    print("digit found")
+else:
+    print ("digit not found.")
