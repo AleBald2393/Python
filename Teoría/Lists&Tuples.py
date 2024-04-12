@@ -26,3 +26,7 @@ print('After change:', A)
 # Split the string by comma
 
 'A,B,C,D'.split(',')
+# Clone (clone by value) the list A
+
+B = A[:]
+B
