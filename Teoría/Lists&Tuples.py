@@ -23,3 +23,6 @@ print('After change:', A)
 # Split the string, default is by space
 
 'hard rock'.split()
+# Split the string by comma
+
+'A,B,C,D'.split(',')
