@@ -19,3 +19,7 @@ print('After change:', A)
 print('Before change:', A)
 del(A[0])
 print('After change:', A)
+
+# Split the string, default is by space
+
+'hard rock'.split()
