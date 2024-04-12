@@ -14,3 +14,8 @@ A = ["disco", 10, 1.2]
 print('Before change:', A)
 A[0] = 'hard rock'
 print('After change:', A)
+# Delete the element based on the index
+
+print('Before change:', A)
+del(A[0])
+print('After change:', A)
