@@ -91,6 +91,34 @@ Copied!
 values()	Extracts all values from the dictionary and converts them into a list. This list can be used for further processing or analysis.	Syntax:
 1
 values_list = list(dict_name.values()) 
+
+# Create the dictionary
+
+Dict = {"key1": 1, "key2": "2", "key3": [3, 3, 3], "key4": (4, 4, 4), ('key5'): 5, (0, 1): 6}
+Dict
+
+# Get all the keys in dictionary
+
+release_year_dict.keys() 
+
+# Get all the values in dictionary
+
+release_year_dict.values() 
+
+# Append value with key into dictionary
+
+release_year_dict['Graduation'] = '2007'
+release_year_dict
+
+# Delete entries by key
+
+del(release_year_dict['Thriller'])
+del(release_year_dict['Graduation'])
+release_year_dict
+
+# Verify the key is in the dictionary
+
+'The Bodyguard' in release_year_dict
 Copied!
 Example:
 
