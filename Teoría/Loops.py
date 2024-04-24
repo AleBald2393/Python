@@ -27,3 +27,34 @@ while condition:
 while count <= 10:
     print(count)
     count += 1
+      
+# Use the range
+
+range(3)
+
+# Use for loop to change the elements in list
+
+squares = ['red', 'yellow', 'green', 'purple', 'blue']
+
+for i in range(0, 5):
+    print("Before square ", i, 'is',  squares[i])
+    squares[i] = 'white'
+    print("After square ", i, 'is',  squares[i])
+
+UN LOOP POR EJEMPLO PARA MULTIPLICAR
+# Write your code here
+i=0
+for i in range (0,11):
+    print (f"6x{i}= {6*i}")
+    i=i+1
+j=0
+for j in range (0,11):
+    print (f"7x{j}= {7*j}")
+    j=j+1
+
+      # Loop through the list and iterate on both index and element value
+
+squares=['red', 'yellow', 'green', 'purple', 'blue']
+
+for i, square in enumerate(squares):
+    print(i, square)
