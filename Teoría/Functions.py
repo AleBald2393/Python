@@ -37,3 +37,13 @@ sum_result = add(3, 5)  # sum_result gets the value 8
 def add(a, b):
     return a + b
 sum_result = add(3, 5)  # sum_result gets the value 8
+
+def example_function():
+    local_variable = "I'm local"
+    print(global_variable)  # Accessing global variable
+    print(local_variable)   # Accessing local variable
+
+def print_numbers(limit):
+    for i in range(1, limit+1):
+        print(i)
+print_numbers(5)  # Output: 1 2 3 4 5
