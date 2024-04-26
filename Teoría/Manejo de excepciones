@@ -52,3 +52,48 @@ except ValueError:
     print("You did not provide a number")
 except:
     print("Something went wrong")
+
+# potential code before try catch
+
+try:
+    # code to try to execute
+except ZeroDivisionError:
+    # code to execute if there is a ZeroDivisionError
+except NameError:
+    # code to execute if there is a NameError
+except:
+    # code to execute if ther is any exception
+else:
+    # code to execute if there is no exception
+finally:
+    # code to execute at the end of the try except no matter what
+    
+# code that will execute if there is no exception or a one that we are handling
+
+EJEMPLO DE DIVIDIR EN CERO
+#Type your code here
+
+def safe_divide(numerator,denominator):
+    try:
+        result = numerator / denominator
+        return result
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero.")
+        return None
+# Test case
+numerator=int(input("Enter the numerator value:-"))
+denominator=int(input("Enter the denominator value:-"))
+print(safe_divide(numerator,denominator)) 
+
+EJEMPLO ERROR VALUEERROR
+import math
+
+def perform_calculation(number1):
+    try:
+        result = math.sqrt(number1)
+        print(f"Result: {result}")
+    except ValueError:
+        print("Error: Invalid input! Please enter a positive integer or a float value.")
+# Test case
+number1=float(input("Enter the number:-"))
+perform_calculation(number1)
