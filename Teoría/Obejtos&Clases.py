@@ -186,3 +186,22 @@ class TextAnalzer(object):
         formattedText = formattedText.lower()
         
         self.fmtText = formattedText
+
+COUNT FREQUENCY
+class TextAnalyzer(object):
+    
+    def __init__ (self, text):
+        # remove punctuation
+             formattedText = text.replace('.','').replace('!','').replace('?','').replace(',','')
+        # make text lowercase
+        formattedText = formattedText.lower()
+        
+        self.fmtText = formattedText
+    def freqAll(self):        
+        # split text into words
+        splited=selffmtText.split(" ")
+        # Create dictionary
+        freqMap:{}
+        for word in set (wordList):
+            freqMap[word]=wordlist.count(word)
+        return freqMap
