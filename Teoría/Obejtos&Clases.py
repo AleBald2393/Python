@@ -146,3 +146,30 @@ class Vehicle:
         print("Maximum Speed:",self.max_speed)
         print("Mileage:",self.mileage)
         print("seating capacity:",self.seating_capacity)
+
+Creando objeto de carro
+class car:
+    color = "white"
+
+    def __init__(self, max_speed, mileage):
+        self.max_speed = max_speed
+        self.mileage = mileage
+        self.seating_capacity = None
+
+    def assign_seating_capacity(self, seating_capacity):
+        self.seating_capacity = seating_capacity
+
+    def show_properties(self):
+        print("Properties of the Vehicle:")
+        print("Color:", self.color)
+        print("Maximum Speed:", self.max_speed)
+        print("Mileage:", self.mileage)
+        print("Seating Capacity:", self.seating_capacity)
+
+car1=car(200,20)
+car1.assign_seating_capacity(5)
+car1.show_properties()
+
+car2=car(180,25)
+car2.assign_seating_capacity(4)
+car2.show_properties()
