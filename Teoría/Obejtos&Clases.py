@@ -173,3 +173,16 @@ car1.show_properties()
 car2=car(180,25)
 car2.assign_seating_capacity(4)
 car2.show_properties()
+
+Implement a code to format the text in lowercase
+# Press Shift+Enter to run the code.
+class TextAnalzer(object):
+    
+    def __init__ (self, text):
+        # remove punctuation
+          formattedText = text.replace('.','').replace('!','').replace('?','').replace(',','')
+        
+        # make text lowercase
+        formattedText = formattedText.lower()
+        
+        self.fmtText = formattedText
