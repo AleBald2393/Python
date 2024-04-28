@@ -205,3 +205,7 @@ class TextAnalyzer(object):
         for word in set (wordList):
             freqMap[word]=wordlist.count(word)
         return freqMap
+otro ejemplo_
+freqMap=review1.freqAll()
+print(freqMap)
+Imprime: {'sus': 1, 'es': 3, 'a': 1, 'una': 1, 'clientes': 1, 'trato': 1, 'general': 1, 'claro': 1, 'nromal': 1, 'servicio': 1, 'empresa': 1, 'normal': 2, 'y': 1, 'el': 2, 'en': 1}
