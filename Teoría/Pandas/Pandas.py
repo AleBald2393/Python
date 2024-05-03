@@ -109,3 +109,23 @@ async def download(url, filename):
 
 await download(filename, "TopSellingAlbums.csv")
 df = pd.read_csv("TopSellingAlbums.csv")
+
+
+READ FROM EXCEL
+# Read data from Excel File and print the first five rows
+
+xlsx_path = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/jupyterlite/files/Module%205/data/TopSellingAlbums.xlsx'
+
+await download(xlsx_path, "TopSellingAlbums.xlsx")
+df = pd.read_excel("TopSellingAlbums.xlsx")
+df.head()
+
+# Access to the column Length
+
+x = df[['Length']]
+x
+
+# Get the column as a series
+
+x = df['Length']
+x
