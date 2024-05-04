@@ -22,3 +22,27 @@ print("a[1]:", a[1])
 print("a[2]:", a[2])
 print("a[3]:", a[3])
 print("a[4]:", a[4])
+
+b = np.array([3.1, 11.02, 6.2, 213.2, 5.2])
+
+# Enter your code here
+type(b)
+b.dtype
+
+para cambiar elementos en array
+# Assign the first element to 100
+
+c[0] = 100
+c
+
+We can change the 5th element of the array to 0 as follows:
+# Assign the 5th element to 0
+
+c[4] = 0
+c
+
+SLICING 
+# Slicing the numpy array
+
+d = c[1:4]
+d
