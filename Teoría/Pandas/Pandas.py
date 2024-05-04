@@ -129,3 +129,7 @@ x
 
 x = df['Length']
 x
+
+# Slicing the dataframe
+
+df.iloc[0:2, 0:3]
