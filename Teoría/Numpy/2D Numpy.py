@@ -47,3 +47,15 @@ np.sin(Z)
 # Get the transposed of C
 
 C.T
+
+# Write your code below and press Shift+Enter to execute
+
+a = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+A=np.array(a)
+A
+
+# Write your code below and press Shift+Enter to execute
+
+B = np.array([[0, 1], [1, 0], [1, 1], [-1, 0]])
+X=np.dot(A,B)
+X
