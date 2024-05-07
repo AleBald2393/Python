@@ -34,3 +34,6 @@ df[['GDP (Million USD)']] = df[['GDP (Million USD)']]/1000
 df[['GDP (Million USD)']] = np.round(df[['GDP (Million USD)']], 2)
 # Rename the column header from 'GDP (Million USD)' to 'GDP (Billion USD)'
 df.rename(columns = {'GDP (Million USD)' : 'GDP (Billion USD)'})
+
+# Load the DataFrame to the CSV file named "Largest_economies.csv"
+df.to_csv('./Largest_economies.csv')
