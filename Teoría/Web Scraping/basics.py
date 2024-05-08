@@ -19,3 +19,12 @@ links = soup.find_all('a')
 # Iterate through the list of links and print their text
 for the link in links:
     print(link.text)
+
+Custom data extraction
+Web scraping allows you to navigate the HTML structure and extract specific information based on your requirements. This process may involve finding specific tags, attributes, or text content within the HTML document.
+
+Using BeautifulSoup for HTML parsing
+Beautiful Soup is a powerful tool for navigating and extracting specific web page parts. It allows you to find elements based on their tags, attributes, or text, making extracting the information you're interested in easier.
+
+Using pandas read_html for table extraction
+Pandas, a Python library, provides a function called read_html, which can automatically extract data from websites' tables and present it in a format suitable for analysis. It’s similar to taking a table from a webpage and importing it into a spreadsheet for further analysis.
