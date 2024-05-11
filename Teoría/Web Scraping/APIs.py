@@ -46,3 +46,57 @@ import pandas as pd
 r = RandomUser()
 
 #Then, using generate_users() function, we get a list of random 10 users.
+some_list = r.generate_users(10)
+some_list
+
+#For example, to get full name, we call get_full_name() function
+name = r.get_full_name()
+
+#generate photos of the random 10 users.
+for user in some_list:
+    print (user.get_picture())
+
+#Obtener una tabla con información completa de usuarios
+def get_users():
+    users =[]
+     
+    for user in RandomUser.generate_users(10):
+        users.append({"Name":user.get_full_name(),"Gender":user.get_gender(),"City":user.get_city(),"State":user.get_state(),"Email":user.get_email(), "DOB":user.get_dob(),"Picture":user.get_picture()})
+      
+    return pd.DataFrame(users)     
+get_users()
+df1 = pd.DataFrame(get_users())  
+
+Fruityvice API
+#Another, more common way to use APIs, is through requests library.
+import requests
+import json
+
+data = requests.get("https://fruityvice.com/api/fruit/all")
+results = json.loads(data.text)
+
+pd.DataFrame(results)
+
+df2 = pd.json_normalize(results)
+df2
+
+#Let's see if we can extract some information from this dataframe. Perhaps, we need to know the family and genus of a cherry.
+cherry = df2.loc[df2["name"] == 'Cherry']
+(cherry.iloc[0]['family']) , (cherry.iloc[0]['genus'])
+
+Official Joke API
+his API returns random jokes from a database. The following URL can be used to retrieve 10 random jokes.
+
+https://official-joke-api.appspot.com/jokes/ten
+
+Using requests.get("url") function, load the data from the URL.
+
+import requests
+jokes= requests.get("https://official-joke-api.appspot.com/jokes/ten")
+
+results = json.loads(jokes.text)
+
+#Convert json data into pandas data frame. Drop the type and id columns.
+df3 = pd.DataFrame(results2)
+df3.drop(columns=["type","id"],inplace=True)
+df3
