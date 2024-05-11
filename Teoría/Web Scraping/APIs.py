@@ -6,3 +6,5 @@ Efficiency. It allows to use the capabilities of one of the already developed AP
 The disadvantage of using APIs:
 
 Security. If the API is poorly integrated, it means it will be vulnerable to attacks, resulting in data breeches or losses having financial or reputation implications.
+
+Another example of simple API we will use in this notebook is Fruityvice application. The Fruityvice API web service which provides data for all kinds of fruit! You can use Fruityvice to find out interesting information about fruit and educate yourself. The web service is completely free to use and contribute to.
