@@ -70,3 +70,12 @@ for row in soup.find("tbody").find_all('tr'):
 PASO5:
 #imprimir los datos
 netflix_data.head()
+
+AHORA CON PANDAS
+read_html_pandas_data = pd.read_html(url)
+#Or you can convert the BeautifulSoup object to a string.
+read_html_pandas_data = pd.read_html(str(soup))
+
+netflix_dataframe = read_html_pandas_data[0]
+
+netflix_dataframe.head()
