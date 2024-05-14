@@ -27,3 +27,25 @@ print(data)
 #Identify the HTML tags that contain the data you want to extract.
 #Use BeautifulSoup methods to extract the data from the HTML tags.
 #Print the extracted data
+
+What is parsing?
+In simple words, parsing refers to the process of analyzing a string of text or a data structure, usually following a set of rules or grammar, to understand its structure and meaning. Parsing involves breaking down a piece of text or data into its individual components or elements, and then analyzing those components to extract the desired information or to understand their relationships and meanings.
+
+soup = BeautifulSoup(data, 'html5lib')
+
+PASO3:
+netflix_data = pd.DataFrame(columns=["Date", "Open", "High", "Low", "Close", "Volume"])
+
+Working on HTML table ¶
+
+These are the following tags which are used while creating HTML tables.
+
+<table>: This tag is a root tag used to define the start and end of the table. All the content of the table is enclosed within these tags.
+
+<tr>: This tag is used to define a table row. Each row of the table is defined within this tag.
+
+<td>: This tag is used to define a table cell. Each cell of the table is defined within this tag. You can specify the content of the cell between the opening and closing tags.
+
+<th>: This tag is used to define a header cell in the table. The header cell is used to describe the contents of a column or row. By default, the text inside a tag is bold and centered.
+
+<tbody>: This is the main content of the table, which is defined using the tag. It contains one or more rows of elements.
