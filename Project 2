@@ -79,3 +79,9 @@ read_html_pandas_data = pd.read_html(str(soup))
 netflix_dataframe = read_html_pandas_data[0]
 
 netflix_dataframe.head()
+
+#Para traer el titulo de las columnas
+list(amazon_data.columns)
+
+#para traer el último dato de x columna, en esta caso "Open"
+amazon_data["Open"].iloc[-1]
