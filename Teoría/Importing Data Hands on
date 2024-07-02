@@ -65,3 +65,47 @@ df.head(20)
 Here, axis=0 means that the contents along the entire row will be dropped wherever the entity 'price' is found to be NaN
 
 Now, you have successfully read the raw data set and added the correct headers into the data frame.
+
+Find the name of the columns of the dataframe.
+print (df.columns)
+
+SAVE DATASET
+Correspondingly, Pandas enables you to save the data set to CSV. By using the dataframe.to_csv() method, you can add the file path and name along with quotation marks in the brackets.
+
+df.to_csv("automobile.csv", index=False)
+
+data types
+df.dtypes
+
+# check the data type of data frame "df" by .dtypes
+print(df.dtypes)
+
+Describe
+This method will provide various summary statistics, excluding NaN (Not a Number) values.
+df.describe()
+
+# describe all the columns in "df" 
+df.describe(include = "all")
+
+Question #3: 
+You can select the columns of a dataframe by indicating the name of each column. For example, you can select the three columns as follows:
+
+dataframe[[' column 1 ',column 2', 'column 3']]
+
+Where "column" is the name of the column, you can apply the method ".describe()" to get the statistics of those columns as follows:
+
+dataframe[[' column 1 ',column 2', 'column 3'] ].describe()
+
+Apply the method to ".describe()" to the columns 'length' and 'compression-ratio'.
+
+df[['length', 'compression-ratio']].describe()
+
+info
+dataframe.info()
+
+It provides a concise summary of your data frame.
+
+This method prints information about a data frame including the index dtype and columns, non-null values and memory usage.
+
+# look at the info of "df"
+df.info()
