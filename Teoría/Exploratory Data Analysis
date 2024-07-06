@@ -307,11 +307,6 @@ Since the p-value is
 
 Horsepower vs. Price¶
 
-
-
-
-
-
 Let's calculate the Pearson Correlation Coefficient and P-value of 'horsepower' and 'price'.
 pearson_coef, p_value = stats.pearsonr(df['horsepower'], df['price'])
 print("The Pearson Correlation Coefficient is", pearson_coef, " with a P-value of P = ", p_value)
@@ -322,3 +317,21 @@ Since the p-value is
 
 Length vs. Price
 Let's calculate the Pearson Correlation Coefficient and P-value of 'length' and 'price'.
+pearson_coef, p_value = stats.pearsonr(df['length'], df['price'])
+print("The Pearson Correlation Coefficient is", pearson_coef, " with a P-value of P = ", p_value) 
+
+Conclusion:
+Since the p-value is 
+ 0.001, the correlation between length and price is statistically significant, and the linear relationship is moderately strong (~0.691).
+
+Width vs. Price
+Let's calculate the Pearson Correlation Coefficient and P-value of 'width' and 'price':
+
+pearson_coef, p_value = stats.pearsonr(df['width'], df['price'])
+print("The Pearson Correlation Coefficient is", pearson_coef, " with a P-value of P =", p_value ) 
+
+Curb-Weight vs. Price
+Let's calculate the Pearson Correlation Coefficient and P-value of 'curb-weight' and 'price':
+
+pearson_coef, p_value = stats.pearsonr(df['curb-weight'], df['price'])
+print( "The Pearson Correlation Coefficient is", pearson_coef, " with a P-value of P = ", p_value)  
