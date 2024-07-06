@@ -157,3 +157,36 @@ df.rename(columns={'"highway-mpg"':'highway-L/100km'}, inplace=True)
 df.head()
 df[["peak-rpm"]] = df[["peak-rpm"]].astype("float")
 
+Data Normalization¶
+Why normalization?
+
+Normalization is the process of transforming values of several variables into a similar range. Typical normalizations include
+
+scaling the variable so the variable average is 0
+scaling the variable so the variance is 1
+scaling the variable so the variable values range from 0 to 1
+Example
+
+To demonstrate normalization, say you want to scale the columns "length", "width" and "height".
+
+Target: normalize those variables so their value ranges from 0 to 1
+
+Approach: replace the original value by (original value)/(maximum value)
+# replace (original value) by (original value)/(maximum value)
+df['length'] = df['length']/df['length'].max()
+df['width'] = df['width']/df['width'].max()
+
+According to the example above, normalize the column "height".
+df['height'] = df['height']/df['height'].max()
+df[["length","width","height"]].head()
+
+Binning
+Why binning?
+
+Binning is a process of transforming continuous numerical variables into discrete categorical 'bins' for grouped analysis.
+
+Example:
+
+In your data set, "horsepower" is a real valued variable ranging from 48 to 288 and it has 59 unique values. What if you only care about the price difference between cars with high horsepower, medium horsepower, and little horsepower (3 types)? You can rearrange them into three ‘bins' to simplify analysis.
+
+Use the Pandas method 'cut' to segment the 'horsepower' column into 3 bins.
