@@ -81,3 +81,34 @@ Often it is required to normalize a continuous data attribute. Write a code to n
 # Write your code below and press Shift+Enter to execute
 df["CPU_frequency"] = df["CPU_frequency"]/df["CPU_frequency"].max()
 
+Task - 5
+Binning
+Binning is a process of creating a categorical attribute which splits the values of a continuous data into a specified number of groups. In this case, write a code to create 3 bins for the attribute "Price". These bins would be named "Low", "Medium" and "High". The new attribute will be named "Price-binned".
+
+bins = np.linspace(min(df["Price"]), max(df["Price"]), 4)
+group_names = ['Low', 'Medium', 'High']
+df['Price-binned'] = pd.cut(df['Price'], bins, labels=group_names, include_lowest=True )
+
+
+
+# Write your code below and press Shift+Enter to execute
+%matplotlib inline
+import matplotlib as plt
+from matplotlib import pyplot
+pyplot.bar(group_names, df["Price-binned"].value_counts())
+
+plt.pyplot.xlabel("Price")
+plt.pyplot.ylabel("count")
+plt.pyplot.title("Price bins")
+
+Task - 6
+Indicator variables
+Convert the "Screen" attribute of the dataset into 2 indicator variables, "Screen-IPS_panel" and "Screen-Full_HD". Then drop the "Screen" attribute from the dataset.
+
+dummy_variable_1 = pd.get_dummies(df["Screen"])
+dummy_variable_1.rename(columns={'IPS Panel':'Screen-IPS_panel', 'Full HD':'Screen-Full_HD'}, inplace=True)
+df = pd.concat([df, dummy_variable_1], axis=1)
+
+df.drop("Screen", axis = 1, inplace=True)
+
+print(df.head())
