@@ -190,3 +190,104 @@ Example:
 In your data set, "horsepower" is a real valued variable ranging from 48 to 288 and it has 59 unique values. What if you only care about the price difference between cars with high horsepower, medium horsepower, and little horsepower (3 types)? You can rearrange them into three ‘bins' to simplify analysis.
 
 Use the Pandas method 'cut' to segment the 'horsepower' column into 3 bins.
+
+Convert data to correct format:
+df["horsepower"]=df["horsepower"].astype(int, copy=True)
+
+Plot the histogram of horsepower to see the distribution of horsepower.
+%matplotlib inline
+import matplotlib as plt
+from matplotlib import pyplot
+plt.pyplot.hist(df["horsepower"])
+
+# set x/y labels and plot title
+plt.pyplot.xlabel("horsepower")
+plt.pyplot.ylabel("count")
+plt.pyplot.title("horsepower bins")
+
+Build a bin array with a minimum value to a maximum value by using the bandwidth calculated above. The values will determine when one bin ends and another begins.
+bins = np.linspace(min(df["horsepower"]), max(df["horsepower"]), 4)
+bins
+
+Set group names:
+group_names = ['Low', 'Medium', 'High']
+
+df['horsepower-binned'] = pd.cut(df['horsepower'], bins, labels=group_names, include_lowest=True )
+df[['horsepower','horsepower-binned']].head(20)
+
+df["horsepower-binned"].value_counts()
+
+Plot the distribution of each bin:
+%matplotlib inline
+import matplotlib as plt
+from matplotlib import pyplot
+pyplot.bar(group_names, df["horsepower-binned"].value_counts())
+
+# set x/y labels and plot title
+plt.pyplot.xlabel("horsepower")
+plt.pyplot.ylabel("count")
+plt.pyplot.title("horsepower bins")
+
+BINS VISUALIZATION
+%matplotlib inline
+import matplotlib as plt
+from matplotlib import pyplot
+
+
+# draw historgram of attribute "horsepower" with bins = 3
+plt.pyplot.hist(df["horsepower"], bins = 3)
+
+# set x/y labels and plot title
+plt.pyplot.xlabel("horsepower")
+plt.pyplot.ylabel("count")
+plt.pyplot.title("horsepower bins")
+
+Indicator Variable
+What is an indicator variable?
+
+An indicator variable (or dummy variable) is a numerical variable used to label categories. They are called 'dummies' because the numbers themselves don't have inherent meaning.
+
+Why use indicator variables?
+
+You use indicator variables so you can use categorical variables for regression analysis in the later modules.
+
+Example
+The column "fuel-type" has two unique values: "gas" or "diesel". Regression doesn't understand words, only numbers. To use this attribute in regression analysis, you can convert "fuel-type" to indicator variables.
+
+Use the Panda method 'get_dummies' to assign numerical values to different categories of fuel type.
+
+df.columns
+
+Get the indicator variables and assign it to data frame "dummy_variable_1":
+dummy_variable_1 = pd.get_dummies(df["fuel-type"])
+dummy_variable_1.head()
+
+Change the column names for clarity:
+
+dummy_variable_1.rename(columns={'gas':'fuel-type-gas', 'diesel':'fuel-type-diesel'}, inplace=True)
+dummy_variable_1.head()
+
+# merge data frame "df" and "dummy_variable_1" 
+df = pd.concat([df, dummy_variable_1], axis=1)
+
+# drop original column "fuel-type" from "df"
+df.drop("fuel-type", axis = 1, inplace=True)
+
+df.head()
+
+# Write your code below and press Shift+Enter to execute 
+dummy_variable_2 = pd.get_dummies(df['aspiration'])
+
+# change column names for clarity
+dummy_variable_2.rename(columns={'std':'aspiration-std', 'turbo': 'aspiration-turbo'}, inplace=True)
+
+# show first 5 instances of data frame "dummy_variable_1"
+dummy_variable_2.head()
+
+df = pd.concat([df, dummy_variable_2], axis=1)
+
+# drop original column "fuel-type" from "df"
+df.drop("aspiration", axis = 1, inplace=True)
+
+Save the new csv:
+df.to_csv('clean_df.csv')
