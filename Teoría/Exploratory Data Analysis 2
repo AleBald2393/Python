@@ -1,0 +1,58 @@
+import piplite
+await piplite.install('seaborn')
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+%matplotlib inline
+
+Import the dataset
+You should download the modified version of the data set from the last module. Run the following code block to download the CSV file to this environment.
+
+The functions below will download the dataset into your browser:
+
+from pyodide.http import pyfetch
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+filepath="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DA0101EN-Coursera/laptop_pricing_dataset_mod2.csv"
+
+await download(filepath, "laptops.csv")
+file_name="laptops.csv"
+
+Import the file to a pandas dataframe.
+
+df = pd.read_csv(file_name, header=0)
+
+Task 1 - Visualize individual feature patterns
+Continuous valued features
+Generate regression plots for each of the parameters "CPU_frequency", "Screen_Size_inch" and "Weight_pounds" against "Price". Also, print the value of correlation of each feature with "Price".
+
+# Write your code below and press Shift+Enter to execute
+# CPU_frequency plot
+Click here for Solution
+sns.regplot(x="CPU_frequency", y="Price", data=df)
+plt.ylim(0,)
+
+# Write your code below and press Shift+Enter to execute
+# Screen_Size_inch plot
+sns.regplot(x="Screen_Size_inch", y="Price", data=df)
+plt.ylim(0,)
+
+sns.regplot(x="Weight_pounds", y="Price", data=df)
+plt.ylim(0,)
+
+for param in ["CPU_frequency", "Screen_Size_inch","Weight_pounds"]:
+    print(f"Correlation of Price and {param} is ", df[[param,"Price"]].corr())
+
+Categorical features
+Generate Box plots for the different feature that hold categorical values. These features would be "Category", "GPU", "OS", "CPU_core", "RAM_GB", "Storage_GB_SSD"
+
+# Category Box plot
+sns.boxplot(x="Category", y="Price", data=df)
