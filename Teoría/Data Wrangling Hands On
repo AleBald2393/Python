@@ -74,3 +74,86 @@ avg_horsepower = df['horsepower'].astype('float').mean(axis=0)
 print("Average horsepower:", avg_horsepower)
 
 Replace "NaN" with the mean value in the "horsepower" column
+
+Calculate the mean value for "peak-rpm" column
+avg_peakrpm=df['peak-rpm'].astype('float').mean(axis=0)
+print("Average peak rpm:", avg_peakrpm)
+
+Replace "NaN" with the mean value in the "peak-rpm" column
+df['peak-rpm'].replace(np.nan, avg_peakrpm, inplace=True)
+
+To see which values are present in a particular column, we can use the ".value_counts()" method:
+df['num-of-doors'].value_counts()
+
+We can also use the ".idxmax()" method to calculate the most common type automatically:
+df['num-of-doors'].value_counts().idxmax()
+
+The replacement procedure is very similar to what you have seen previously:
+#replace the missing 'num-of-doors' values by the most frequent 
+df["num-of-doors"].replace(np.nan, "four", inplace=True)
+
+Finally, drop all rows that do not have price data:
+# simply drop whole row with NaN in "price" column
+df.dropna(subset=["price"], axis=0, inplace=True)
+
+# reset index, because we droped two rows
+df.reset_index(drop=True, inplace=True)
+
+df.head()
+
+CORRECT DATA FORMAT
+The last step in data cleaning is checking and making sure that all data is in the correct format (int, float, text or other).
+In Pandas, you use:
+
+.dtype() to check the data type
+
+.astype() to change the data type
+
+Let's list the data types for each column
+df.dtypes
+
+Convert data types to proper format
+df[["bore", "stroke"]] = df[["bore", "stroke"]].astype("float")
+df[["normalized-losses"]] = df[["normalized-losses"]].astype("int")
+df[["price"]] = df[["price"]].astype("float")
+
+Data Standardization
+
+You usually collect data from different agencies in different formats. (Data standardization is also a term for a particular type of data normalization where you subtract the mean and divide by the standard deviation.)
+
+What is standardization?
+
+Standardization is the process of transforming data into a common format, allowing the researcher to make the meaningful comparison.
+
+Example
+
+Transform mpg to L/100km:
+
+In your data set, the fuel consumption columns "city-mpg" and "highway-mpg" are represented by mpg (miles per gallon) unit. Assume you are developing an application in a country that accepts the fuel consumption with L/100km standard.
+
+You will need to apply data transformation to transform mpg into L/100km
+
+Use this formula for unit conversion:
+
+L/100km = 235 / mpg
+
+You can do many mathematical operations directly using Pandas.
+
+df.head()
+
+# Convert mpg to L/100km by mathematical operation (235 divided by mpg)
+df['city-L/100km'] = 235/df["city-mpg"]
+
+# check your transformed data 
+df.head()
+
+# transform mpg to L/100km by mathematical operation (235 divided by mpg)
+df["highway-mpg"] = 235/df["highway-mpg"]
+
+# rename column name from "highway-mpg" to "highway-L/100km"
+df.rename(columns={'"highway-mpg"':'highway-L/100km'}, inplace=True)
+
+# check your transformed data 
+df.head()
+df[["peak-rpm"]] = df[["peak-rpm"]].astype("float")
+
