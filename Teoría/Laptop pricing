@@ -88,3 +88,80 @@ lm1 = LinearRegression()
 Z = df[['CPU_frequency','RAM_GB','Storage_GB_SSD','CPU_core','OS','GPU','Category']]
 lm1.fit(Z,Y)
 Y_hat = lm1.predict(Z)
+
+Plot the Distribution graph of the predicted values as well as the Actual values
+
+ax1 = sns.distplot(df['Price'], hist=False, color="r", label="Actual Value")
+sns.distplot(Y_hat, hist=False, color="b", label="Fitted Values" , ax=ax1)
+
+plt.title('Actual vs Fitted Values for Price')
+plt.xlabel('Price')
+plt.ylabel('Proportion of laptops')
+
+Find the R^2 score and the MSE value for this fit. Is this better or worst than the performance of Single Linear Regression?
+ax2 = sns.distplot(df['Price'], hist=False, color="r", label="Actual Value")
+sns.distplot(Y_hat, hist=False, color="b", label="Fitted Values" , ax=ax2)
+
+plt.title('Actual vs Fitted Values for Price')
+plt.xlabel('Price')
+plt.ylabel('Proportion of laptops')
+
+Task 3 - Polynomial Regression
+Use the variable "CPU_frequency" to create Polynomial features. Try this for 3 different values of polynomial degrees. Remember that polynomial fits are done using numpy.polyfit.
+
+X = X.to_numpy().flatten()
+f1 = np.polyfit(X, Y, 1)
+p1 = np.poly1d(f1)
+
+f3 = np.polyfit(X, Y, 3)
+p3 = np.poly1d(f3)
+
+f5 = np.polyfit(X, Y, 5)
+p5 = np.poly1d(f5)
+
+Plot the regression output against the actual data points to note how the data fits in each case. To plot the polynomial response over the actual data points, you have the function shown below.
+def PlotPolly(model, independent_variable, dependent_variabble, Name):
+    x_new = np.linspace(independent_variable.min(),independent_variable.max(),100)
+    y_new = model(x_new)
+
+    plt.plot(independent_variable, dependent_variabble, '.', x_new, y_new, '-')
+    plt.title(f'Polynomial Fit for Price ~ {Name}')
+    ax = plt.gca()
+    ax.set_facecolor((0.898, 0.898, 0.898))
+    fig = plt.gcf()
+    plt.xlabel(Name)
+    plt.ylabel('Price of laptops')
+
+Call this function for the 3 models created and get the required graphs.
+PlotPolly(p1, X, Y, 'CPU_frequency')
+
+PlotPolly(p3, X, Y, 'CPU_frequency')
+
+PlotPolly(p5, X, Y, 'CPU_frequency')
+
+r_squared_1 = r2_score(Y, p1(X))
+print('The R-square value for 1st degree polynomial is: ', r_squared_1)
+print('The MSE value for 1st degree polynomial is: ', mean_squared_error(Y,p1(X)))
+r_squared_3 = r2_score(Y, p3(X))
+print('The R-square value for 3rd degree polynomial is: ', r_squared_3)
+print('The MSE value for 3rd degree polynomial is: ', mean_squared_error(Y,p3(X)))
+r_squared_5 = r2_score(Y, p5(X))
+print('The R-square value for 5th degree polynomial is: ', r_squared_5)
+print('The MSE value for 5th degree polynomial is: ', mean_squared_error(Y,p5(X)))
+
+Task 4 - Pipeline
+Create a pipeline that performs parameter scaling, Polynomial Feature generation and Linear regression. Use the set of multiple features as before to create this pipeline.
+
+Input=[('scale',StandardScaler()), ('polynomial', PolynomialFeatures(include_bias=False)), ('model',LinearRegression())]
+pipe=Pipeline(Input)
+Z = Z.astype(float)
+pipe.fit(Z,Y)
+ypipe=pipe.predict(Z)
+
+Evaluate the MSE and R^2 values for the this predicted output.
+
+#  Write your code below and press Shift+Enter to execute
+print('MSE for multi-variable polynomial pipeline is: ', mean_squared_error(Y, ypipe))
+print('R^2 for multi-variable polynomial pipeline is: ', r2_score(Y, ypipe))
+
+You should now have seen that the values of R^2 increase as we go from Single Linear Regression to Multiple Linear Regression. Further, if we go for multiple linear regression extended with polynomial features, we get an even better R^2 value.
