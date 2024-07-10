@@ -37,4 +37,36 @@ Linear Function
 a refers to the intercept of the regression line, in other words: the value of Y when X is 0
 b refers to the slope of the regression line, in other words: the value with which Y changes when X increases by 1 unit
 
+Let's load the modules for linear regression:
+from sklearn.linear_model import LinearRegression
 
+Create the linear regression object:
+lm = LinearRegression()
+lm
+
+X = df[['highway-mpg']]
+Y = df['price']
+
+Fit the linear model using highway-mpg:
+lm.fit(X,Y)
+
+We can output a prediction:
+Yhat=lm.predict(X)
+Yhat[0:5] 
+
+What is the value of the intercept (a)?
+lm.intercept_
+
+What is the value of the slope (b)?
+lm.coef_
+
+Train the model using "engine-size" as the independent variable and "price" as the dependent variable?
+lm1.fit(df[['engine-size']], df[['price']])
+lm1
+
+Question #1 d): 
+What is the equation of the predicted line? You can use x and yhat or "engine-size" or "price".
+
+Yhat=-7963.34 + 166.86*X
+
+Price=-7963.34 + 166.86*df['engine-size']
