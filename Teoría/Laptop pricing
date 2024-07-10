@@ -84,3 +84,7 @@ print('The mean square error of price and predicted value is: ', mse_slr)
 Task 2 - Multiple Linear Regression
 The parameters which have a low enough p-value so as to indicate strong relationship with the 'Price' value are 'CPU_frequency', 'RAM_GB', 'Storage_GB_SSD', 'CPU_core', 'OS', 'GPU' and 'Category'. Use all these variables to create a Multiple Linear Regression system.
 
+lm1 = LinearRegression()
+Z = df[['CPU_frequency','RAM_GB','Storage_GB_SSD','CPU_core','OS','GPU','Category']]
+lm1.fit(Z,Y)
+Y_hat = lm1.predict(Z)
