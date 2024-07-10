@@ -1,0 +1,86 @@
+The following required libraries are not pre-installed in the Skills Network Labs environment. You will need to run the following cell to install them:
+
+import piplite
+await piplite.install('seaborn')
+
+Importing Required Libraries
+We recommend you import all required libraries in one place (here):
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import mean_squared_error, r2_score
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning) 
+%matplotlib inline
+
+Importing the dataset
+Run the cell below to download the dataset into this environment.
+
+This function will download the dataset into your browser
+
+#This function will download the dataset into your browser 
+
+from pyodide.http import pyfetch
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+We put the file path along with a quotation mark so that pandas will read the file into a dataframe from that address. The file path can be either an URL or your local file address.
+
+path = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DA0101EN-Coursera/laptop_pricing_dataset_mod2.csv"
+
+You will need to download the dataset using the download() function:
+
+#you will need to download the dataset;
+await download(path, "laptops.csv")
+file_name="laptops.csv"
+
+df = pd.read_csv(file_name, header=0)
+
+# show the first 5 rows using dataframe.head() method
+print("The first 5 rows of the dataframe") 
+df.head(5)
+
+Task 1 : Single Linear Regression
+You have learnt that "CPU_frequency" is the parameter with the lowest p-value among the different features of the dataset. Create a single feature Linear Regression model that fits the pair of "CPU_frequency" and "Price" to find the model for prediction.
+
+lm = LinearRegression()
+
+X = df[['CPU_frequency']]
+Y = df['Price']
+
+lm.fit(X,Y)
+
+Yhat=lm.predict(X)
+
+Generate the Distribution plot for the predicted values and that of the actual values. How well did the model perform?
+ax1 = sns.distplot(df['Price'], hist=False, color="r", label="Actual Value")
+
+# Create a distribution plot for predicted values
+sns.distplot(Yhat, hist=False, color="b", label="Fitted Values" , ax=ax1)
+
+plt.title('Actual vs Fitted Values for Price')
+plt.xlabel('Price')
+plt.ylabel('Proportion of laptops')
+plt.legend(['Actual Value', 'Predicted Value'])
+plt.show()
+
+Evaluate the Mean Squared Error and R^2 score values for the model.
+
+# Write your code below and press Shift+Enter to execute 
+mse_slr = mean_squared_error(df['Price'], Yhat)
+r2_score_slr = lm.score(X, Y)
+print('The R-square for Linear Regression is: ', r2_score_slr)
+print('The mean square error of price and predicted value is: ', mse_slr)
+
+Task 2 - Multiple Linear Regression
+The parameters which have a low enough p-value so as to indicate strong relationship with the 'Price' value are 'CPU_frequency', 'RAM_GB', 'Storage_GB_SSD', 'CPU_core', 'OS', 'GPU' and 'Category'. Use all these variables to create a Multiple Linear Regression system.
+
