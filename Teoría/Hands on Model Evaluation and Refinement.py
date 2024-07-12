@@ -102,3 +102,30 @@ x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.
 
 print("number of test samples :", x_test.shape[0])
 print("number of training samples:",x_train.shape[0])
+
+Question #1):
+Use the function "train_test_split" to split up the dataset such that 40% of the data samples will be utilized for testing. Set the parameter "random_state" equal to zero. The output of the function should be the following: "x_train1" , "x_test1", "y_train1" and "y_test1".
+
+x_train1, x_test1, y_train1, y_test1 = train_test_split(x_data, y_data, test_size=0.4, random_state=0) 
+print("number of test samples :", x_test1.shape[0])
+print("number of training samples:",x_train1.shape[0])
+
+Let's import LinearRegression from the module linear_model.
+from sklearn.linear_model import LinearRegression
+
+We create a Linear Regression object:
+lre=LinearRegression()
+
+We fit the model using the feature "horsepower":
+lre.fit(x_train[['horsepower']], y_train)
+
+Let's calculate the R^2 on the test data:
+lre.score(x_test[['horsepower']], y_test)
+
+Question #2): 
+Find the R^2 on the test data using 40% of the dataset for testing.
+x_train1, x_test1, y_train1, y_test1 = train_test_split(x_data, y_data, test_size=0.4, random_state=0)
+lre.fit(x_train1[['horsepower']],y_train1)
+lre.score(x_test1[['horsepower']],y_test1)
+
+Cross-Validation Score
