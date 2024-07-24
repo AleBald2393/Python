@@ -142,4 +142,57 @@ We can easily add more countries to line plot to make meaningful comparisons imm
 Question: Let's compare the number of immigrants from India and China from 1980 to 2013.
 
 Step 1: Get the data set for China and India, and display the dataframe.
+### type your answer here
+df_CI = df_can.loc[['India', 'China'], years]
+df_CI
 
+Step 2: Plot graph. We will explicitly specify line plot by passing in kind parameter to plot().
+### type your answer here
+df_CI.plot(kind='line')
+
+That doesn't look right...
+
+Recall that pandas plots the indices on the x-axis and the columns as individual lines on the y-axis. Since df_CI is a dataframe with the country as the index and years as the columns, we must first transpose the dataframe using transpose() method to swap the row and columns.
+df_CI = df_CI.transpose()
+df_CI.head()
+
+pandas will auomatically graph the two countries on the same graph. Go ahead and plot the new transposed dataframe. Make sure to add a title to the plot and label the axes.
+df_CI.index = df_CI.index.map(int) # let's change the index values of df_CI to type integer for plotting
+df_CI.plot(kind='line')
+
+plt.title('Immigrants from China and India')
+plt.ylabel('Number of Immigrants')
+plt.xlabel('Years')
+
+plt.show()
+
+Question: Compare the trend of top 5 countries that contributed the most to immigration to Canada.
+### type your answer here
+#The correct answer is:    
+    #Step 1: Get the dataset. Recall that we created a Total column that calculates cumulative immigration by country. 
+    #We will sort on this column to get our top 5 countries using pandas sort_values() method.
+    
+inplace = True # paramemter saves the changes to the original df_can dataframe
+df_can.sort_values(by='Total', ascending=False, axis=0, inplace=True)
+
+# get the top 5 entries
+df_top5 = df_can.head(5)
+
+# transpose the dataframe
+df_top5 = df_top5[years].transpose() 
+
+print(df_top5)
+
+
+    #Step 2: Plot the dataframe. To make the plot more readeable, we will change the size using the `figsize` parameter.
+df_top5.index = df_top5.index.map(int) # let's change the index values of df_top5 to type integer for plotting
+df_top5.plot(kind='line', figsize=(14, 8)) # pass a tuple (x, y) size
+
+
+
+plt.title('Immigration Trend of Top 5 Countries')
+plt.ylabel('Number of Immigrants')
+plt.xlabel('Years')
+
+
+plt.show()
