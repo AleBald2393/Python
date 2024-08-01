@@ -1,0 +1,85 @@
+Importing Libraries 
+Import Primary Modules:
+
+import numpy as np  # useful for many scientific computing in Python
+import pandas as pd # primary data structure library
+Let's install Folium
+Folium is not available by default. So, we first need to install it before we are able to import it.
+
+#!pip3 install folium==0.5.0
+import folium
+​
+print('Folium installed and imported!')
+Folium installed and imported!
+Introduction to Folium 
+Folium is a powerful Python library that helps you create several types of Leaflet maps. The fact that the Folium results are interactive makes this library very useful for dashboard building.
+
+From the official Folium documentation page:
+
+Folium builds on the data wrangling strengths of the Python ecosystem and the mapping strengths of the Leaflet.js library. Manipulate your data in Python, then visualize it in on a Leaflet map via Folium.
+
+Folium makes it easy to visualize data that's been manipulated in Python on an interactive Leaflet map. It enables both the binding of data to a map for choropleth visualizations as well as passing Vincent/Vega visualizations as markers on the map.
+
+The library has a number of built-in tilesets from OpenStreetMap, Mapbox, Cartodb and supports custom tilesets with Mapbox or Cloudmade API keys. Folium supports both GeoJSON and TopoJSON overlays, as well as the binding of data to those overlays to create choropleth maps with color-brewer color schemes.
+
+Generating the world map is straightforward in Folium. You simply create a Folium Map object, and then you display it. What is attractive about Folium maps is that they are interactive, so you can zoom into any region of interest despite the initial zoom level.
+
+# define the world map
+world_map = folium.Map()
+​
+# display world map
+world_map
+Make this Notebook Trusted to load map: File -> Trust Notebook
+Go ahead. Try zooming in and out of the rendered map above.
+
+You can customize this default definition of the world map by specifying the centre of your map, and the initial zoom level.
+
+All locations on a map are defined by their respective Latitude and Longitude values. So you can create a map and pass in a center of Latitude and Longitude values of [0, 0].
+
+For a defined center, you can also define the initial zoom level into that location when the map is rendered. The higher the zoom level the more the map is zoomed into the center.
+
+Let's create a map centered around Canada and play with the zoom level to see how it affects the rendered map.
+
+# define the world map centered around Canada with a low zoom level
+world_map = folium.Map(location=[56.130, -106.35], zoom_start=4)
+​
+# display world map
+world_map
+Make this Notebook Trusted to load map: File -> Trust Notebook
+Let's create the map again with a higher zoom level.
+
+# define the world map centered around Canada with a higher zoom level
+world_map = folium.Map(location=[56.130, -106.35], zoom_start=8)
+​
+# display world map
+world_map
+Make this Notebook Trusted to load map: File -> Trust Notebook
+As you can see, the higher the zoom level the more the map is zoomed into the given center.
+
+Question: Create a map of Mexico with a zoom level of 4.
+
+### type your answer here
+#define Mexico's geolocation coordinates
+mexico_latitude = 23.6345 
+mexico_longitude = -102.5528
+​
+# define the world map centered around Canada with a higher zoom level
+mexico_map = folium.Map(location=[mexico_latitude, mexico_longitude], zoom_start=4)
+​
+# display world map
+mexico_map
+​
+Make this Notebook Trusted to load map: File -> Trust Notebook
+Click here for a sample python solution
+    #The correct answer is:
+    
+    #define Mexico's geolocation coordinates
+    mexico_latitude = 23.6345 
+    mexico_longitude = -102.5528
+
+    # define the world map centered around Canada with a higher zoom level
+    mexico_map = folium.Map(location=[mexico_latitude, mexico_longitude], zoom_start=4)
+
+    # display world map
+    mexico_map
+Another cool feature of Folium is that you can generate different map styles.
